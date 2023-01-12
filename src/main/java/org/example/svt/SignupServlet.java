@@ -1,0 +1,67 @@
+package org.example.svt;
+
+import freemarker.template.Configuration;
+import freemarker.template.TemplateException;
+import org.example.tinderDAO.ControllerTinderDao;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+
+public class SignupServlet extends HttpServlet {
+    private final ControllerTinderDao controllerTinderDao;
+    private final Configuration conf;
+
+    public SignupServlet(ControllerTinderDao controllerTinderDao, Configuration conf) {
+        this.controllerTinderDao = controllerTinderDao;
+        this.conf = conf;
+    }
+
+    HashMap<String, Object> data = new HashMap<>();
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding(String.valueOf(StandardCharsets.UTF_8));
+        data.put("name", "");
+        try (PrintWriter w = resp.getWriter()) {
+            conf.getTemplate("signup.ftl").process(data, w);
+        } catch (TemplateException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        resp.setCharacterEncoding(String.valueOf(StandardCharsets.UTF_8));
+        String name = req.getParameter("name");
+        String username = req.getParameter("username");
+        String password = req.getParameter("password");
+        String file = req.getParameter("file");
+        PrintWriter printWriter = null;
+        try {
+            printWriter = resp.getWriter();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            controllerTinderDao.signUpUser(name, username, password, file);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+
+        try {
+            resp.sendRedirect("/login");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        printWriter.close();
+    }
+
+}

@@ -1,0 +1,20 @@
+{
+  "name": "tinder3",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "build": "echo \"No build specified\" && exit 1",
+    "test": "echo \"No test specified\" && exit 1",
+    "start": "src/main/java/org/example/ServerApp.java"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BukanNadya/tinder3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BukanNadya/tinder3/issues"
+  },
+  "homepage": "https://github.com/BukanNadya/tinder3#readme"
+}
