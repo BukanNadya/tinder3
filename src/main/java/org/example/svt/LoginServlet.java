@@ -28,22 +28,22 @@ public class LoginServlet extends HttpServlet {
         this.controllerTinderDao = controllerTinderDao;
         this.conf = conf;
 
-        ClassLoader cl = this.getClass().getClassLoader();
-        URL resource = cl.getResource("html/1.txt");
-        String file = resource.getFile();
-        String path = file.substring(0, file.length() - 5);
-        String file1 = path + "chat.ftl";
-        File f1 = new File(file1);
-        String file2 = path + "like-page-Andrii.ftl";
-        File f2 = new File(file2);
-        String file3 = path + "login.ftl";
-        File f3 = new File(file3);
-        String file4 = path + "people-list-Andrii.ftl";
-        File f4 = new File(file4);
-        String file5 = path + "signup.ftl";
-        File f5 = new File(file5);
-        String file6 = path + "css/style1.css";
-        File f6 = new File(file6);
+//        ClassLoader cl = this.getClass().getClassLoader();
+//        URL resource = cl.getResource("html/1.txt");
+//        String file = resource.getFile();
+//        String path = file.substring(0, file.length() - 5);
+//        String file1 = path + "chat.ftl";
+//        File f1 = new File(file1);
+//        String file2 = path + "like-page-Andrii.ftl";
+//        File f2 = new File(file2);
+//        String file3 = path + "login.ftl";
+//        File f3 = new File(file3);
+//        String file4 = path + "people-list-Andrii.ftl";
+//        File f4 = new File(file4);
+//        String file5 = path + "signup.ftl";
+//        File f5 = new File(file5);
+//        String file6 = path + "css/style1.css";
+//        File f6 = new File(file6);
     }
 
     HashMap<String, Object> data = new HashMap<>();
